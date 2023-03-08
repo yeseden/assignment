@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>useless web</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		
+		.emoji {
+			font-size: 9rem;
+			margin: 0 1rem;
+			cursor: pointer;
+			transition: transform 0.3s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<span class="emoji" onclick="moveUp(this)">&#x1F600;</span>
+		<span class="emoji" onclick="moveDown(this)">&#x1F61B;</span>
+		<span class="emoji" onclick="moveUp(this)">&#x1F60E;</span>
+		<span class="emoji" onclick="moveDown(this)">&#x1F607;</span>
+		<span class="emoji" onclick="moveUp(this)">&#x1F60D;</span>
+		<span class="emoji" onclick="moveDown(this)">&#x1F60A;</span>
+	</div>
+
+	<script>
+		function moveUp(emoji) {
+			emoji.style.transform = "translateY(-100%)";
+		}
+
+		function moveDown(emoji) {
+			emoji.style.transform = "translateY(100%)";
+		}
+
+		// 올라간 이모지를 다시 원위치로 되돌리는 함수
+		document.querySelectorAll('.emoji').forEach(function(emoji) {
+			emoji.addEventListener('transitionend', function() {
+				emoji.style.transform = '';
+			});
+		});
+	</script>
+</body>
+</html>
